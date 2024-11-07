@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Admin\TechnologyController as AdminTechnologyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,7 @@ Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 
 Auth::routes();
 
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     /* Route::get('/', [AdminProjectController::class, 'index'])->name('index');
@@ -38,4 +37,11 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('/projects', AdminProjectController::class);
     Route::delete('/projects/{id}/permanent-delete', [AdminProjectController::class, 'permanentDestroy'])->name('projects.permanent-destroy');
     Route::patch('/projects/{id}/restore', [AdminProjectController::class, 'restore'])->name('projects.restore');
+});
+
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/technologies/bin', [AdminTechnologyController::class, 'bin'])->name('technologies.bin');
+    Route::resource('/technologies', AdminTechnologyController::class);
+    Route::delete('/technologies/{id}/permanent-delete', [AdminTechnologyController::class, 'permanentDestroy'])->name('technologies.permanent-destroy');
+    Route::patch('/technologies/{id}/restore', [AdminTechnologyController::class, 'restore'])->name('technologies.restore');
 });
