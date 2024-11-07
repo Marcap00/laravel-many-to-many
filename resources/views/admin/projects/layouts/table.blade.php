@@ -22,6 +22,7 @@
                     <th>Category</th>
                     <th>Author</th>
                     <th>Title</th>
+                    <th>Techonologies</th>
                     <th>Description</th>
                     <th></th>
                 </tr>
@@ -33,6 +34,15 @@
                     <td>{{ $project->type->name }}</td>
                     <td>{{ $project->author }}</td>
                     <td>{{ $project->title }}</td>
+                    <td>
+                        @forelse ($project->technologies as $technology)
+                            <span class="badge text-black" style="background-color: {{ $technology->color }}">
+                                {{ $technology->name }}
+                            </span>
+                        @empty
+
+                        @endforelse
+                    </td>
                     <td>{{ $project->description }}</td>
                     <td>
                         <div class="flex-align-center">
