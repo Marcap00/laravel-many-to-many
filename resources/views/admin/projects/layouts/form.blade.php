@@ -13,7 +13,7 @@
             <div class="row row-cols-2 g-2 text-white">
                 <div class="col flex-column-center my-2">
                     <div class="form-group mb-2">
-                        <label for="author"><h6 class="mb-2">Author: </h6></label>
+                        <label for="author"><h6 class="mb-2">Author:</h6></label>
                         @if (Route::currentRouteName() == 'admin.projects.edit')
                             <input type="text" class="form-control p-2" id="author" name="author" placeholder="Enter project author..." value="{{ old('author', $project->author) }}">
                         @elseif (Route::currentRouteName() == 'admin.projects.create')
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col flex-column-center my-2">
                     <div class="form-group mb-2">
-                        <label for="title"><h6 class="mb-2">Title: </h6></label>
+                        <label for="title"><h6 class="mb-2">Title:</h6></label>
                         @if (Route::currentRouteName() == 'admin.projects.edit')
                             <input type="text" class="form-control p-2" id="title" name="title" placeholder="Enter project title..." value="{{ old('title', $project->title) }}">
                         @elseif (Route::currentRouteName() == 'admin.projects.create')
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col flex-column-center my-2">
                     <div class="form-group mb-2">
-                        <label for="description"><h6 class="mb-2">Description: </h6></label>
+                        <label for="description"><h6 class="mb-2">Description:</h6></label>
                         @if (Route::currentRouteName() == 'admin.projects.edit')
                             <input type="text" class="form-control p-2" id="description" name="description" placeholder="Enter project description..." value="{{ old('description', $project->description) }}">
                         @elseif (Route::currentRouteName() == 'admin.projects.create')
@@ -83,13 +83,29 @@
                                 @endif
                             @endforeach
                         </select>
-
                         @error("type")
                             <div class="alert alert-warning">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
+                </div>
+                <div class="col flex-column-center my-2">
+                    <div class="form-group mb-2">
+                        <label for="technology"><h6 class="mb-2">Technologies:</h6></label>
+                            @foreach ($technologies as $t)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="technology" value="{{ $t->id }}" name="technology[]"
+                                    @checked($project->technologies->contains($t))>
+                                <label class="form-check-label" for="technology" name="technology[]">{{ ucwords($t->name) }}</label>
+                            </div>
+                            @endforeach
+                    </div>
+                    @error("technology")
+                    <div class="alert alert-warning">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <div class="flex-center my-3">
