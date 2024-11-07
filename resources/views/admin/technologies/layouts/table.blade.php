@@ -73,7 +73,7 @@
                                         <form class="del-form" action="{{ route('admin.technologies.destroy', $t) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger" type="submit">Cancel <i class="fas fa-trash fa-lg"></i></button>
+                                            <button class="btn btn-danger" type="submit">Delete <i class="fas fa-trash fa-lg"></i></button>
                                         </form>
                                         @elseif (Route::currentRouteName() == 'admin.technologies.bin')
                                         <form class="perma-del-form" action="{{ route('admin.technologies.permanent-destroy', $t->id) }}" method="POST">

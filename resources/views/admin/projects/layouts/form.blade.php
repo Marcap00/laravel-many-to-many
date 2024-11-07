@@ -7,18 +7,14 @@
     <div class="container">
         <form action="{{ (Route::currentRouteName() == 'admin.projects.edit') ? route('admin.projects.update', $project->id ) : route('admin.projects.store') }}" method="POST" class="text-center card">
             @if (Route::currentRouteName() == 'admin.projects.edit')
-                @method('PUT')
+            @method('PUT')
             @endif
             @csrf
             <div class="row row-cols-2 g-2 text-white">
                 <div class="col flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="author"><h6 class="mb-2">Author:</h6></label>
-                        @if (Route::currentRouteName() == 'admin.projects.edit')
-                            <input type="text" class="form-control p-2" id="author" name="author" placeholder="Enter project author..." value="{{ old('author', $project->author) }}">
-                        @elseif (Route::currentRouteName() == 'admin.projects.create')
-                            <input type="text" class="form-control p-2" id="author" name="author" placeholder="Enter project author..." value="{{ old('author') }}">
-                        @endif
+                        <input type="text" class="form-control p-2" id="author" name="author" placeholder="Enter project author..." value="{{ old('author', $project->author) }}">
                     </div>
                     @error("author")
                     <div class="alert alert-warning">
@@ -29,11 +25,7 @@
                 <div class="col flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="title"><h6 class="mb-2">Title:</h6></label>
-                        @if (Route::currentRouteName() == 'admin.projects.edit')
-                            <input type="text" class="form-control p-2" id="title" name="title" placeholder="Enter project title..." value="{{ old('title', $project->title) }}">
-                        @elseif (Route::currentRouteName() == 'admin.projects.create')
-                            <input type="text" class="form-control p-2" id="title" name="title" placeholder="Enter project title..." value="{{ old('title') }}">
-                        @endif
+                        <input type="text" class="form-control p-2" id="title" name="title" placeholder="Enter project title..." value="{{ old('title', $project->title) }}">
                     </div>
                     @error("title")
                     <div class="alert alert-warning">
@@ -44,11 +36,7 @@
                 <div class="col flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="description"><h6 class="mb-2">Description:</h6></label>
-                        @if (Route::currentRouteName() == 'admin.projects.edit')
-                            <input type="text" class="form-control p-2" id="description" name="description" placeholder="Enter project description..." value="{{ old('description', $project->description) }}">
-                        @elseif (Route::currentRouteName() == 'admin.projects.create')
-                            <input type="text" class="form-control p-2" id="description" name="description" placeholder="Enter project description..." value="{{ old('description') }}">
-                        @endif
+                        <input type="text" class="form-control p-2" id="description" name="description" placeholder="Enter project description..." value="{{ old('description', $project->description) }}">
                     </div>
                     @error("description")
                     <div class="alert alert-warning">
@@ -72,15 +60,9 @@
                         --}}
                         <select name="type_id" id="type_id" class="form-select">
                             @foreach ($types as $type)
-                                @if (Route::currentRouteName() == 'admin.projects.edit')
                                 <option value="{{ $type->id }}" @selected(old('type_id', $project->type_id) == $type->id)>
                                     {{ $type->name }}
                                 </option>
-                                @elseif (Route::currentRouteName() == 'admin.projects.create')
-                                <option value="{{ $type->id }}" @selected(old('type_id') == $type->id)>
-                                    {{ $type->name }}
-                                </option>
-                                @endif
                             @endforeach
                         </select>
                         @error("type")

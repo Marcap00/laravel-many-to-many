@@ -56,10 +56,6 @@
                                 <i class="fas fa-pencil"></i>
                             </a>
 
-                            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <i class="fas fa-trash fa-lg"></i>
-                            </button>
-
                             @elseif (Route::currentRouteName() == 'admin.projects.bin')
                             <form class="patch-form" action="{{ route('admin.projects.restore', $project->id) }}" method="POST">
                                 @csrf
@@ -67,11 +63,11 @@
                                 <button class="btn btn-warning me-2" type="submit"><i class="fas fa-rotate"></i></button>
                             </form>
 
+                            @endif
+
                             <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <i class="fas fa-trash fa-lg"></i>
                             </button>
-
-                            @endif
                         </div>
                         <!-- Modal -->
                         <div class="modal fade del-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -92,7 +88,7 @@
                                         <form class="del-form" action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger" type="submit">Cancel <i class="fas fa-trash fa-lg"></i></button>
+                                            <button class="btn btn-danger" type="submit">Delete <i class="fas fa-trash fa-lg"></i></button>
                                         </form>
                                         @elseif (Route::currentRouteName() == 'admin.projects.bin')
                                         <form class="perma-del-form" action="{{ route('admin.projects.permanent-destroy', $project->id) }}" method="POST">
