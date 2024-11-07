@@ -72,9 +72,15 @@
                         --}}
                         <select name="type_id" id="type_id" class="form-select">
                             @foreach ($types as $type)
+                                @if (Route::currentRouteName() == 'admin.projects.edit')
+                                <option value="{{ $type->id }}" @selected(old('type_id', $project->type_id) == $type->id)>
+                                    {{ $type->name }}
+                                </option>
+                                @elseif (Route::currentRouteName() == 'admin.projects.create')
                                 <option value="{{ $type->id }}" @selected(old('type_id') == $type->id)>
                                     {{ $type->name }}
                                 </option>
+                                @endif
                             @endforeach
                         </select>
 
