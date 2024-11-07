@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="card text-center">
+                <div class="card text-center p-3">
                     <div class="card-img-top">
                         <img class=" rounded-3 img-fluid" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
                     </div>
