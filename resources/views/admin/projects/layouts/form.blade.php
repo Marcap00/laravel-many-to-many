@@ -78,7 +78,7 @@
                             @foreach ($technologies as $t)
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="technologies" value="{{ $t->id }}" name="technologies[]"
-                                    @checked($project->technologies->contains($t))>
+                                @checked(old('technologies') ? in_array($t->id, old('technologies')) : $project->technologies->contains($t))>
                                 <label class="form-check-label" for="technologies" name="technologies[]">{{ ucwords($t->name) }}</label>
                             </div>
                             @endforeach
