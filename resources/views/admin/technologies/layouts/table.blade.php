@@ -5,7 +5,7 @@
     <div class="container">
         @if (Route::currentRouteName() == 'admin.technologies.index')
         <a class="btn btn-success my-3 me-2" href="{{ route('admin.technologies.create') }}">
-            Add new category <i class="fas fa-plus"></i>
+            Add new technology <i class="fas fa-plus"></i>
         </a>
         <a href="{{ route('admin.technologies.bin') }}" class="btn btn-warning my-3">
             Go to the bin <i class="fas fa-trash"></i>

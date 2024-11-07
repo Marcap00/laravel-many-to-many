@@ -17,28 +17,34 @@ class TechnologySeeder extends Seeder
         $technologies = [
             [
                 'name' => 'html',
+                'color' => '#F16A2F'
             ],
             [
                 'name' => 'css',
+                'color' => '#306AF1'
             ],
             [
                 'name' => 'javascript',
+                'color' => '#F7E025'
             ],
             [
                 'name' => 'php',
+                'color' => '#7B7FB5'
             ],
             [
                 'name' => 'vue',
+                'color' => '#36BB86'
             ],
             [
                 'name' => 'laravel',
+                'color' => '#FF3427'
             ]
         ];
 
         foreach ($technologies as $t) {
             Technology::create([
                 'name' => $t['name'],
-                'color' => $faker->unique()->hexColor(),
+                'color' => $t['color'],
             ]);
         }
     }

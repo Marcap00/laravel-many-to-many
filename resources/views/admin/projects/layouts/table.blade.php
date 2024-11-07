@@ -41,7 +41,9 @@
                                     {{ $technology->name }}
                                 </span>
                             @empty
-                                No technologies...
+                            <span class="badge text-bg-secondary">
+                                none
+                            </span>
                             @endforelse
                         </a>
                     </td>

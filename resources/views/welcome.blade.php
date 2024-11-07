@@ -8,7 +8,16 @@
                 <div class="card border rounded-3">
                     <img class="rounded-top-3" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
                     <div class="card-body  text-center">
-                        <h5 class="card-title"> {{ $project->author }} </h5>
+                        @forelse ($project->technologies as $t)
+                        <span class="badge text-black mb-2" style="background-color: {{ $t->color }}">
+                            {{ $t->name }}
+                        </span>
+                        @empty
+                        <span class="badge text-bg-secondary">
+                            none
+                        </span>
+                        @endforelse
+                        <h5 class="card-title fw-bold"> {{ $project->author }} </h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary"> {{ $project->title }} </h6>
                         <p class="card-text"> {{ $project->description }} </p>
                         @auth
