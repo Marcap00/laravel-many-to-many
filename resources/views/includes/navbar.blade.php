@@ -32,6 +32,9 @@
                     @endif
                 @else
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('welcome') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.technologies.index') }}">Technologies</a>
                     </li>
                     <li class="nav-item">

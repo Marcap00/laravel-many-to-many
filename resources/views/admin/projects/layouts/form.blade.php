@@ -74,16 +74,16 @@
                 </div>
                 <div class="col flex-column-center my-2">
                     <div class="form-group mb-2">
-                        <label for="technology"><h6 class="mb-2">Technologies:</h6></label>
+                        <label for="technologies"><h6 class="mb-2">Technologies:</h6></label>
                             @foreach ($technologies as $t)
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="technology" value="{{ $t->id }}" name="technology[]"
+                                <input class="form-check-input" type="checkbox" id="technologies" value="{{ $t->id }}" name="technologies[]"
                                     @checked($project->technologies->contains($t))>
-                                <label class="form-check-label" for="technology" name="technology[]">{{ ucwords($t->name) }}</label>
+                                <label class="form-check-label" for="technologies" name="technologies[]">{{ ucwords($t->name) }}</label>
                             </div>
                             @endforeach
                     </div>
-                    @error("technology")
+                    @error("technologies")
                     <div class="alert alert-warning">
                         {{ $message }}
                     </div>
