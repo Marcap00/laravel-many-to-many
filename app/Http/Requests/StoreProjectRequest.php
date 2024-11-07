@@ -30,7 +30,8 @@ class StoreProjectRequest extends FormRequest
             'author' => ['required', 'string', 'max:255'],
             'title' => ['required', 'string', 'max:255', 'unique:projects,title'],
             'description' => ['required', 'string', 'max:255'],
-            'type_id' => ['required', 'numeric', 'integer', 'exists:types,id']
+            'type_id' => ['required', 'numeric', 'integer', 'exists:types,id'],
+            'technologies' => ['array', 'exists:technologies,id'],
         ];
     }
 }
