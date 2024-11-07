@@ -91,7 +91,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="10" class="text-red">No more technologies available...</td>
+                    <td colspan="4">No more technologies available...</td>
                 </tr>
                 @endforelse
             </tbody>

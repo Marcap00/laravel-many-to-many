@@ -16,8 +16,8 @@
         </a>
         @endif
         <table class="table table-responsive table-striped table-hover table-borderless mb-0 align-middle">
-            <thead class="text-red">
-                <tr class= text-red">
+            <thead>
+                <tr>
                     <th>ID</th>
                     <th>Category</th>
                     <th>Author</th>
@@ -30,18 +30,20 @@
             <tbody>
                 @forelse ($projects as $project)
                 <tr>
-                    <td class= text-red">{{ $project->id }}</td>
+                    <td>{{ $project->id }}</td>
                     <td>{{ $project->type->name }}</td>
                     <td>{{ $project->author }}</td>
                     <td>{{ $project->title }}</td>
                     <td>
-                        @forelse ($project->technologies as $technology)
-                            <span class="badge text-black" style="background-color: {{ $technology->color }}">
-                                {{ $technology->name }}
-                            </span>
-                        @empty
-                            No technologies...
-                        @endforelse
+                        <a href="{{ route('admin.technologies.index') }}">
+                            @forelse ($project->technologies as $technology)
+                                <span class="badge text-black" style="background-color: {{ $technology->color }}">
+                                    {{ $technology->name }}
+                                </span>
+                            @empty
+                                No technologies...
+                            @endforelse
+                        </a>
                     </td>
                     <td>{{ $project->description }}</td>
                     <td>
@@ -108,7 +110,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="10" class="text-red">No more projects available...</td>
+                    <td colspan="7">No more projects avalaible...</td>
                 </tr>
                 @endforelse
             </tbody>
