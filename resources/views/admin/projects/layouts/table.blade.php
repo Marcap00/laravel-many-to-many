@@ -40,7 +40,7 @@
                                 {{ $technology->name }}
                             </span>
                         @empty
-
+                            No technologies...
                         @endforelse
                     </td>
                     <td>{{ $project->description }}</td>
