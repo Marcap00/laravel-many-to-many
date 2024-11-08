@@ -7,6 +7,8 @@ use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+use App\Helpers\ReposHelper;
 
 class ProjectSeeder extends Seeder
 {
@@ -15,7 +17,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $typesIds = Type::all()->pluck("id");
+        /* $typesIds = Type::all()->pluck("id");
         $projects = [
             [
                 'title' => 'laravel-dc-comics',
@@ -82,15 +84,42 @@ class ProjectSeeder extends Seeder
                 'author' => 'MarCap',
                 'type_id' => 1,
             ],
-        ];
+        ]; */
+
+        $projects = ReposHelper::getRepos();
+
 
         foreach ($projects as $project) {
-            $newProject = new Project();
+            /* Project::create([
+                'title' => $project['name'],
+                'author' => $project['owner']['login'],
+                if (Str::contains($project['name'], 'laravel')) {
+                    'type_id' => 3,
+                } elseif (Str::contains($project['name'], ['vite', 'vue', 'html', 'css', 'js', 'javascript'])) {
+                    'type_id' => 1,
+                } elseif (Str::contains($project['name'], 'php')) {
+                    'type_id' => 2,
+                };
+            ]); */
+
+            $project = new Project();
+            $project->title = $project['name'];
+            $project->author = $project['owner']['login'];
+            if (Str::contains($project['name'], 'laravel')) {
+                $project->type_id = 3;
+            } elseif (Str::contains($project['name'], ['vite', 'vue', 'html', 'css', 'js', 'javascript'])) {
+                $project->type_id = 1;
+            } elseif (Str::contains($project['name'], 'php')) {
+                $project->type_id = 2;
+            }
+            $project->save();
+
+            /*  $newProject = new Project();
             $newProject->type_id = $project['type_id'];
             $newProject->author = $project['author'];
             $newProject->title = $project['title'];
             $newProject->description = $faker->realText(150);
-            $newProject->save();
+            $newProject->save(); */
         }
     }
 }
