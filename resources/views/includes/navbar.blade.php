@@ -35,10 +35,10 @@
                         <a class="nav-link" href="{{ route('welcome') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.technologies.index') }}">Technologies</a>
+                        <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
+                        <a class="nav-link" href="{{ route('admin.technologies.index') }}">Technologies</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
