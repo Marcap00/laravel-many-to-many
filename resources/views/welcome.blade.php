@@ -6,7 +6,7 @@
             @forelse ($projects as $project)
             <div class="col mb-4 flex-grow-0">
                 <div class="card border rounded-3">
-                    <img class="rounded-top-3" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
+                        <img class="rounded-top-3" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
                     <div class="card-body  text-center">
                         <p class="card-text">Category: <span class="fw-semibold">{{ $project->type->name }}</span></p>
                         @forelse ($project->technologies as $t)
@@ -26,6 +26,9 @@
                             <i class="fas fa-eye"></i>
                         </a>
                         @endauth
+                        <a class="btn btn-secondary px-4" href="{{ $project->url }}">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>

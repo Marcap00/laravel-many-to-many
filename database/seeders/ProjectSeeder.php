@@ -37,7 +37,7 @@ class ProjectSeeder extends Seeder
                 $newProject->type_id = 1;
             }
             $newProject->description = $project['description'];
-            $newProject->url = $project['url'];
+            $newProject->url = $project['html_url'];
             $newProject->save();
 
             /* Project::create([
