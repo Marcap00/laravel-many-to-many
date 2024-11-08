@@ -1,1 +1,1 @@
-@extends('admin.technologies.layouts.form')
+@extends('admin.technologies.layouts.create_or_edit')

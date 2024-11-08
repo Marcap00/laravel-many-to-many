@@ -1,1 +1,1 @@
-@extends('admin.technologies.layouts.table')
+@extends('admin.technologies.layouts.index_or_bin')

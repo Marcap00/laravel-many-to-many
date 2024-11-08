@@ -25,7 +25,7 @@ class ProjectController extends Controller
         $projects = Project::paginate(10);
 
 
-        return view('admin.projects.layouts.table', compact('projects'));
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ProjectController extends Controller
         $types = Type::all();
         $technologies = Technology::all();
 
-        return view('admin.projects.layouts.form', compact('project', 'types', 'technologies'));
+        return view('admin.projects.create', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -73,7 +73,7 @@ class ProjectController extends Controller
     {
         $types = Type::all();
         $technologies = Technology::all();
-        return view('admin.projects.layouts.form', compact('project', 'types', 'technologies'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -127,6 +127,6 @@ class ProjectController extends Controller
         // if we are in front of a query builder we must use get() method
         $projects = Project::onlyTrashed()->paginate(10);
 
-        return view('admin.projects.layouts.table', compact('projects'));
+        return view('admin.projects.bin', compact('projects'));
     }
 }

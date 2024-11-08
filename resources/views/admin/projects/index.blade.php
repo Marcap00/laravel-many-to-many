@@ -1,1 +1,1 @@
-@extends('admin.projects.layouts.table')
+@extends('admin.projects.layouts.index_or_bin')

@@ -23,7 +23,7 @@ class TechnologyController extends Controller
     {
         $technologies = Technology::paginate(10);
 
-        return view('admin.technologies.layouts.table', compact('technologies'));
+        return view('admin.technologies.index', compact('technologies'));
     }
 
     /**
@@ -34,7 +34,7 @@ class TechnologyController extends Controller
         $technology = new Technology();
         $projects = Project::all();
 
-        return view('admin.technologies.layouts.form', compact('technology', 'projects'));
+        return view('admin.technologies.create', compact('technology', 'projects'));
     }
 
     /**
@@ -65,7 +65,7 @@ class TechnologyController extends Controller
     {
         $projects = Project::all();
 
-        return view('admin.technologies.layouts.form', compact('technology', 'projects'));
+        return view('admin.technologies.edit', compact('technology', 'projects'));
     }
 
     /**
@@ -112,6 +112,6 @@ class TechnologyController extends Controller
     {
         $technologies = Technology::onlyTrashed()->paginate(10);
 
-        return view('admin.technologies.layouts.table', compact('technologies'));
+        return view('admin.technologies.bin', compact('technologies'));
     }
 }
