@@ -90,6 +90,24 @@ class ProjectSeeder extends Seeder
 
 
         foreach ($projects as $project) {
+
+            /* echo $project['name']; */
+
+            $newProject = new Project();
+            $newProject->title = $project['name'];
+            $newProject->author = $project['owner']['login'];
+            if (Str::contains($project['name'], 'laravel')) {
+                $newProject->type_id = 3;
+            } elseif (Str::contains($project['name'], ['vite', 'vue', 'html', 'css', 'js', 'javascript'])) {
+                $newProject->type_id = 1;
+            } elseif (Str::contains($project['name'], 'php')) {
+                $newProject->type_id = 2;
+            } else {
+                $newProject->type_id = 1;
+            }
+            $newProject->description = 'ciao';
+            $newProject->save();
+
             /* Project::create([
                 'title' => $project['name'],
                 'author' => $project['owner']['login'],
@@ -102,24 +120,14 @@ class ProjectSeeder extends Seeder
                 };
             ]); */
 
-            $project = new Project();
-            $project->title = $project['name'];
-            $project->author = $project['owner']['login'];
-            if (Str::contains($project['name'], 'laravel')) {
-                $project->type_id = 3;
-            } elseif (Str::contains($project['name'], ['vite', 'vue', 'html', 'css', 'js', 'javascript'])) {
-                $project->type_id = 1;
-            } elseif (Str::contains($project['name'], 'php')) {
-                $project->type_id = 2;
-            }
-            $project->save();
-
-            /*  $newProject = new Project();
+            /*
+            $newProject = new Project();
             $newProject->type_id = $project['type_id'];
             $newProject->author = $project['author'];
             $newProject->title = $project['title'];
             $newProject->description = $faker->realText(150);
-            $newProject->save(); */
+            $newProject->save();
+            */
         }
     }
 }
