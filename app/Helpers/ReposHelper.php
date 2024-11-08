@@ -6,7 +6,7 @@ namespace App\Helpers;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Http;
 
-class FileHelper
+class ReposHelper
 {
     public static function getRepos()
     {
