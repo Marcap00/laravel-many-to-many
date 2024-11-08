@@ -17,77 +17,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        /* $typesIds = Type::all()->pluck("id");
-        $projects = [
-            [
-                'title' => 'laravel-dc-comics',
-                'author' => 'MarCap',
-                'type_id' => 3,
-            ],
-            [
-                'title' => 'laravel-many-to-many',
-                'author' => 'MarCap',
-                'type_id' => 3,
-            ],
-            [
-                'title' => 'laravel-auth',
-                'author' => 'MarCap',
-                'type_id' => 3,
-            ],
-            [
-                'title' => 'vite-yu-gi-oh',
-                'author' => 'MarCap',
-                'type_id' => 1,
-            ],
-            [
-                'title' => 'vite-comics',
-                'author' => 'MarCap',
-                'type_id' => 1,
-            ],
-            [
-                'title' => 'vite-boolflix',
-                'author' => 'MarCap',
-                'type_id' => 1,
-            ],
-            [
-                'title' => 'vue-bolzapp',
-                'author' => 'MarCap',
-                'type_id' => 1,
-            ],
-            [
-                'title' => 'proj-html-vuejs',
-                'author' => 'MarCap, Francesco, Tanara, Daniele',
-                'type_id' => 1,
-            ],
-            [
-                'title' => 'php-oop-1',
-                'author' => 'MarCap',
-                'type_id' => 2,
-            ],
-            [
-                'title' => 'php-oop-2',
-                'author' => 'MarCap',
-                'type_id' => 2,
-            ],
-            [
-                'title' => 'html-spotify-web',
-                'author' => 'MarCap',
-                'type_id' => 1,
-            ],
-            [
-                'title' => 'html-bootstrap-dashboard',
-                'author' => 'MarCap',
-                'type_id' => 1,
-            ],
-            [
-                'title' => 'js-our-team',
-                'author' => 'MarCap',
-                'type_id' => 1,
-            ],
-        ]; */
-
         $projects = ReposHelper::getRepos();
-
 
         foreach ($projects as $project) {
 
@@ -97,15 +27,18 @@ class ProjectSeeder extends Seeder
             $newProject->title = $project['name'];
             $newProject->author = $project['owner']['login'];
             if (Str::contains($project['name'], 'laravel')) {
-                $newProject->type_id = 3;
+                $newProject->type_id = 4;
             } elseif (Str::contains($project['name'], ['vite', 'vue', 'html', 'css', 'js', 'javascript'])) {
-                $newProject->type_id = 1;
-            } elseif (Str::contains($project['name'], 'php')) {
                 $newProject->type_id = 2;
+            } elseif (Str::contains($project['name'], 'php')) {
+                $newProject->type_id = 3;
+            } elseif (Str::contains($project['name'], ['db', 'database', 'sql'])) {
+                $newProject->type_id = 5;
             } else {
                 $newProject->type_id = 1;
             }
-            $newProject->description = 'ciao';
+            $newProject->description = $project['description'];
+            $newProject->url = $project['url'];
             $newProject->save();
 
             /* Project::create([
@@ -119,15 +52,6 @@ class ProjectSeeder extends Seeder
                     'type_id' => 2,
                 };
             ]); */
-
-            /*
-            $newProject = new Project();
-            $newProject->type_id = $project['type_id'];
-            $newProject->author = $project['author'];
-            $newProject->title = $project['title'];
-            $newProject->description = $faker->realText(150);
-            $newProject->save();
-            */
         }
     }
 }

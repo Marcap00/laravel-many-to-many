@@ -12,10 +12,11 @@ class Project extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'type_id',
         'author',
         'title',
         'description',
-        'type_id',
+        'url',
     ];
 
     public function type()

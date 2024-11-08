@@ -50,6 +50,8 @@ class ProjectTechnologySeeder extends Seeder
                 $project->technologies()->sync([3]);
             } elseif (Str::contains($formattedName, 'php')) {
                 $project->technologies()->sync([4]);
+            } elseif (Str::contains($formattedName, ['db', 'database', 'sql'])) {
+                $project->technologies()->sync([7]);
             }
         }
     }

@@ -15,7 +15,7 @@ class ReposHelper
             ->withHeader('Accept', 'application/vnd.github+json')
             ->withHeader('X-GitHub-Api-Version', '2022-11-28')
             ->withOptions(['verify' => false])
-            ->get("https://api.github.com/users/$username/repos");
+            ->get("https://api.github.com/users/$username/repos" . "?per_page=100");
 
         return $response->json();
     }

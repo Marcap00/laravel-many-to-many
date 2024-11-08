@@ -38,7 +38,11 @@ class TechnologySeeder extends Seeder
             [
                 'name' => 'laravel',
                 'color' => '#FF3427'
-            ]
+            ],
+            [
+                'name' => 'sql',
+                'color' => '#FFEE08'
+            ],
         ];
 
         foreach ($technologies as $t) {

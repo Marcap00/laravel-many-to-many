@@ -14,14 +14,13 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         $names = [
+            "Null",
             "Frontend",
             "Backend",
             "Fullstack",
+            "Database",
             "Mobile",
             "Desktop",
-            "Database",
-            "Testing",
-            "CyberSec",
         ];
 
         foreach ($names as $name) {
