@@ -8,6 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Helpers\ReposHelper;
+use DateTime;
 
 class ProjectSeeder extends Seeder
 {
@@ -38,6 +39,7 @@ class ProjectSeeder extends Seeder
             }
             $newProject->description = $project['description'];
             $newProject->url = $project['html_url'];
+            $newProject->creation_date = date('Y-m-d H:i:s', strtotime($project['created_at']));
             $newProject->save();
 
             /* Project::create([

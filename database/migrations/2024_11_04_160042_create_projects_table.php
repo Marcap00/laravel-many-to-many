@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title')->nullable(false)->unique();
             $table->text('description')->nullable();
             $table->string('url')->nullable();
+            $table->dateTime('creation_date')->nullable();
             $table->timestamps();
         });
     }
