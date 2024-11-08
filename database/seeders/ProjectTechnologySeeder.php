@@ -6,7 +6,6 @@ use App\Models\Project;
 use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 class ProjectTechnologySeeder extends Seeder
@@ -14,7 +13,7 @@ class ProjectTechnologySeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(Faker $faker): void
+    public function run(): void
     {
         // All Projects
         $projects = Project::all();

@@ -8,6 +8,7 @@
                 <div class="card border rounded-3">
                     <img class="rounded-top-3" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
                     <div class="card-body  text-center">
+                        <p class="card-text">Category: <span class="fw-semibold">{{ $project->type->name }}</span></p>
                         @forelse ($project->technologies as $t)
                         <span class="badge text-black mb-2" style="background-color: {{ $t->color }}">
                             {{ $t->name }}

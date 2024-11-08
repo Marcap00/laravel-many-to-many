@@ -6,7 +6,6 @@ use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 use App\Helpers\ReposHelper;
 
@@ -15,7 +14,7 @@ class ProjectSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(Faker $faker): void
+    public function run(): void
     {
         $projects = ReposHelper::getRepos();
 

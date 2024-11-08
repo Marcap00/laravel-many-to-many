@@ -49,7 +49,7 @@
                     </td>
                     <td>{{ $project->description }}</td>
                     <td>
-                        <div class="flex-align-center">
+                        <div class="flex-end">
                             @if (Route::currentRouteName() == 'admin.projects.index')
                             <a class="btn btn-success me-2" href="{{ route('admin.projects.show', $project) }}">
                                 <i class="fas fa-eye"></i>
