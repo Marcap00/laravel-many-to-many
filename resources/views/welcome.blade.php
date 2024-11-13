@@ -6,7 +6,11 @@
             @forelse ($projects as $project)
             <div class="col mb-4 flex-grow-0">
                 <div class="card border rounded-3">
-                        <img class="rounded-top-3" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
+                    @if ($project->image)
+                        <img src="{{ asset('/storage/' . $project->image) }}" alt="{{ $project->name }}">
+                    @else
+                        <img class=" rounded-3 img-fluid" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
+                    @endif
                     <div class="card-body  text-center">
                         <p class="card-text">Category: <span class="fw-semibold">{{ $project->type->name }}</span></p>
                         @forelse ($project->technologies as $t)

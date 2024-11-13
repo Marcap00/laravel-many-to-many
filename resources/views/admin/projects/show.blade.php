@@ -6,7 +6,11 @@
             <div class="col-md-12">
                 <div class="card text-center p-3">
                     <div class="card-img-top">
-                        <img class=" rounded-3 img-fluid" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
+                        @if ($project->image)
+                            <img src="{{ asset('/storage/' . $project->image) }}" alt="{{ $project->name }}">
+                        @else
+                            <img class=" rounded-3 img-fluid" src="{{"https://placehold.co/400x300?text=" . $project->title }}" alt="{{ $project->name }}">
+                        @endif
                     </div>
                     <div class="card-body flex justify-content-center">
                         <p class="card-text">Category: <span class="fw-semibold">{{ $project->type->name }}</span></p>
