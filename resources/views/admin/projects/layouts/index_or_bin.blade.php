@@ -38,7 +38,7 @@
                         <a href="{{ route('admin.technologies.index') }}">
                             @forelse ($project->technologies as $technology)
                                 <span class="badge text-black" style="background-color: {{ $technology->color }}">
-                                    {{ $technology->name }}
+                                    #{{ $technology->name }}
                                 </span>
                             @empty
                             <span class="badge text-bg-secondary">

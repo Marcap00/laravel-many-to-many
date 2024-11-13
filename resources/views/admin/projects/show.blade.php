@@ -13,7 +13,7 @@
                         <p class="card-text">
                             @forelse  ($project->technologies as $technology)
                             <span class="badge text-black" style="background-color: {{ $technology->color }}">
-                                {{ $technology->name }}
+                                #{{ $technology->name }}
                             </span>
                             @empty
                                 No Technologies

@@ -11,7 +11,7 @@
                         <p class="card-text">Category: <span class="fw-semibold">{{ $project->type->name }}</span></p>
                         @forelse ($project->technologies as $t)
                         <span class="badge text-black mb-2" style="background-color: {{ $t->color }}">
-                            {{ $t->name }}
+                            #{{ $t->name }}
                         </span>
                         @empty
                         <span class="badge text-bg-secondary">
