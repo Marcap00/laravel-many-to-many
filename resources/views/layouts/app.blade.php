@@ -11,7 +11,7 @@
 
     <title>
         {{-- {{ config('app.name', 'Laravel') }} --}}
-        @yield('title', 'Laravel Auth')
+        @yield('title', 'Laravel GitHub Api Projects')
     </title>
 
     <!-- Fonts -->
