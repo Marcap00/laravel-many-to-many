@@ -5,13 +5,13 @@
 @section('content')
 <main>
     <div class="container">
-        <form action="{{ (Route::currentRouteName() == 'admin.projects.edit') ? route('admin.projects.update', $project->id ) : route('admin.projects.store') }}" method="POST" class="text-center card">
+        <form action="{{ (Route::currentRouteName() == 'admin.projects.edit') ? route('admin.projects.update', $project->id ) : route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="text-center card">
             @if (Route::currentRouteName() == 'admin.projects.edit')
             @method('PUT')
             @endif
             @csrf
-            <div class="row row-cols-2 g-2 text-white">
-                <div class="col flex-column-center my-2">
+            <div class="row g-2 text-white">
+                <div class="col-6 flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="author"><h6 class="mb-2">Author:</h6></label>
                         <input type="text" class="form-control p-2" id="author" name="author" placeholder="Enter project author..." value="{{ old('author', $project->author) }}">
@@ -22,7 +22,7 @@
                     </div>
                     @enderror
                 </div>
-                <div class="col flex-column-center my-2">
+                <div class="col-6 flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="title"><h6 class="mb-2">Title:</h6></label>
                         <input type="text" class="form-control p-2" id="title" name="title" placeholder="Enter project title..." value="{{ old('title', $project->title) }}">
@@ -33,7 +33,7 @@
                     </div>
                     @enderror
                 </div>
-                <div class="col flex-column-center my-2">
+                <div class="col-6 flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="description"><h6 class="mb-2">Description:</h6></label>
                         <input type="text" class="form-control p-2" id="description" name="description" placeholder="Enter project description..." value="{{ old('description', $project->description) }}">
@@ -44,7 +44,7 @@
                     </div>
                     @enderror
                 </div>
-                <div class="col flex-column-center my-2">
+                <div class="col-6 flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="type" class="form-label">Type:</label>
                         {{--
@@ -72,7 +72,18 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col flex-column-center my-2">
+                <div class="col-12 flex-column-center my-2">
+                    <div class="form-group mb-2">
+                        <label for="image"><h6 class="mb-2">Image:</h6></label>
+                        <input type="file" class="form-control p-2" id="image" name="image" placeholder="Enter image url...">
+                    </div>
+                    @error("image")
+                    <div class="alert alert-warning">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="col-12 flex-column-center my-2">
                     <div class="form-group mb-2">
                         <label for="technologies"><h6 class="mb-2">Technologies:</h6></label>
                             @foreach ($technologies as $t)
