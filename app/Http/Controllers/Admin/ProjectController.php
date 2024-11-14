@@ -48,8 +48,10 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
-        $filePath = Storage::disk("public")->put("img/projects/", $request->image);
-        $data['image'] = $filePath;
+        if ($request->hasFile('image')) {
+            $filePath = Storage::disk("public")->put("img/projects/", $request->image);
+            $data['image'] = $filePath;
+        }
 
         $project = Project::create($data);
 
@@ -86,6 +88,14 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+
+        if ($request->hasFile("image")) {
+            if ($project->image) {
+                Storage::disk('public')->delete($project->image);
+            }
+            $filePath = Storage::disk('public')->put("img/projects/", $request->image);
+            $data['image'] = $filePath;
+        }
 
         $project->update($data);
 
